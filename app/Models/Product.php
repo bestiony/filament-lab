@@ -12,9 +12,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Product extends Model
 {
     use HasFactory;
+
     protected $casts = [
-        'type' => ProductTypeEnum::class
+        'type' => ProductTypeEnum::class,
     ];
+
     protected $guarded = [];
 
     // ******** RELATIONSHIPS *********
@@ -23,10 +25,12 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
+
     public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class);

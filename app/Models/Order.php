@@ -11,10 +11,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory, SoftDeletes;
+
     protected $casts = [
         'status' => OrderStatusEnum::class,
     ];
+
     protected $guarded = [];
 
     // ******** RELATIONSHIPS *********
@@ -23,6 +25,7 @@ class Order extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+
     public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class);

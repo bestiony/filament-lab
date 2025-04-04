@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     // ******** RELATIONSHIPS *********
@@ -19,10 +20,12 @@ class Category extends Model
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
+
     public function children(): HasMany
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
+
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class)->withTimestamps();

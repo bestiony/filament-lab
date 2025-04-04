@@ -14,7 +14,7 @@ class Customer extends Model
 
     // ******** RELATIONSHIPS *********
 
-    public function orders():HasMany
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }

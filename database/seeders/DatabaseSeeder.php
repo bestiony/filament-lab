@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->count(1)->create([
             'email' => 'admin@gmail.com',
-            'password'=> Hash::make('123456')
+            'password' => Hash::make('123456')
         ]);
         $brands = Brand::factory()->count(10)->create();
         $categories = Category::factory()->count(10)
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             ->create();
         foreach ($brands as $brand) {
             $products = Product::factory()->count(10)->for($brand, 'brand')->create();
-            foreach($products as $product){
+            foreach ($products as $product) {
                 $product->categories()->sync($categories->random(3));
             }
         }
