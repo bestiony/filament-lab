@@ -1,6 +1,6 @@
 <?php
 
-use App\OrderStatusEnum;
+use App\Enums\OrderStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
             $table->string('number')->unique();
-            $table->decimal('total_price',10,2);
+            $table->decimal('total_price', 10, 2);
             $table->string('status')->default(OrderStatusEnum::PENDING);
             $table->decimal('shipping_cost')->nullable();
             $table->longText('notes')->nullable();
